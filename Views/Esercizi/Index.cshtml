@@ -1,0 +1,69 @@
+﻿<div>
+    <h4>1. Stampare il nostro nome e cognome all'interno di un tag h2</h4>
+    @{
+        string myName = "Gino";
+        string mySurname = "Paoli";
+    }
+    <h2>@myName @mySurname</h2>
+    <hr />
+
+    <h4>2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n (con n passato come parametro - n incluso)</h4>
+    @{
+        int sumStamp(int num) {
+        int sum = 0;
+        for(int i = 0; i <= num; i++) {
+            sum += i;
+        }
+        return sum;
+        }
+    }
+    <h2>@sumStamp(5)</h2>
+    <hr />
+
+    <h4>3. Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina</h4>
+    @{
+        string phrase = "nel mezzo del cammin di nostra vita";
+        int count = 0;
+        foreach (char i in phrase)
+        {
+            if (i == 'a')
+                count++;
+        }
+    }
+    <h2>@count</h2>
+    <hr />
+
+    <h4>4. Creare una List<int> di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70:</h4>
+    @{
+        int[] arrayInt = new int[20];
+        for (int i = 0; i < arrayInt.Length; i++)
+        {
+            arrayInt[i] = new Random().Next(1, 90);
+        }
+    }
+    <ul>
+        @foreach (int integer in arrayInt)
+        {
+            @if (integer > 20 && integer < 70)
+            {
+                <li>@integer</li>
+            }
+        }
+    </ul>
+    <hr />
+
+    <h4>5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) con il formato anno-mese-giorno ore:minuti:secondi</h4>
+    <h2>@DateTime.Now</h2>
+    <hr />
+
+    <h4>6. Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina:
+        a. la data di 7 giorni fa
+        <br />
+        b. che giorno della settimana è oggi (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+        <br />
+        c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+    </h4>
+    <h2>a: @DateTime.Now.AddDays(-7)</h2>
+    <h2>b: @DateTime.Now.ToString("dddd");</h2>
+    <h2>c: @DateTime.Now.AddYears(1).ToString("dddd");</h2>
+</div>
